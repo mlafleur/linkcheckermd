@@ -107,13 +107,13 @@ function generateLinkReport() {
                     if(answer) {
                         outputChannel.appendLine(`Error: ${link.address} on line ${lineNumber} is unreachable.`);
                     } else {
-                        outputChannel.appendLine(`Info: ${link.address} on line ${lineNumber}.`);
+                        //outputChannel.appendLine(`Info: ${link.address} on line ${lineNumber}.`);
                     }
                 });
             } else {
                 if(isFtpLink(link.address)) {
                     // We don't do anything with FTP
-                    outputChannel.appendLine(`Info: ${link.address} on line ${lineNumber} is an FTP link.`);
+                    //outputChannel.appendLine(`Info: ${link.address} on line ${lineNumber} is an FTP link.`);
                 } else {
                     // Must be a relative path, but might not be, so try it...
                     try {
@@ -124,7 +124,7 @@ function generateLinkReport() {
                         let fullPath = path.resolve(currentWorkingDirectory, link.address).split('#')[0];
                         // Check if the file exists and log appropriately
                         if(fs.existsSync(fullPath)) {
-                            outputChannel.appendLine(`Info: ${link.address} on line ${lineNumber}.`);
+                            // outputChannel.appendLine(`Info: ${link.address} on line ${lineNumber}.`);
                         } else {
                             outputChannel.appendLine(`Error: ${link.address} on line ${lineNumber} does not exist.`);
                         }
